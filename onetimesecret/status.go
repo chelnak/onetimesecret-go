@@ -13,10 +13,7 @@ type GetStatusResponse struct {
 // GetStatus returns the current status of the system.
 func (c *Client) GetStatus(ctx context.Context) (*GetStatusResponse, error) {
 
-	url, err := c.newURL(
-		c.BaseURL,
-		StatusEndpoint,
-	)
+	url, err := c.newURL(StatusEndpoint)
 	if err != nil {
 		return nil, err
 	}

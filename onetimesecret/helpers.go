@@ -15,11 +15,7 @@ import (
 func (c *Client) newURL(endpoint ...interface{}) (url.URL, error) {
 
 	base := c.BaseURL
-	if c.BaseURL == "" {
-		base = DefaultBaseURL
-	}
-
-	if strings.HasPrefix(base, "/") {
+	if strings.HasSuffix(base, "/") {
 		base = strings.TrimLeft(base, "/")
 	}
 
