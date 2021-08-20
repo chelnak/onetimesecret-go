@@ -25,10 +25,7 @@ type ShareSecretResponse struct {
 // ShareSecret stores a secret value.
 func (c *Client) ShareSecret(ctx context.Context, secret string, passphrase string, ttlSeconds int, recipient string) (*ShareSecretResponse, error) {
 
-	url, err := c.newURL(
-		c.BaseURL,
-		ShareEndpoint,
-	)
+	url, err := c.newURL(ShareEndpoint)
 	if err != nil {
 		return nil, err
 	}
