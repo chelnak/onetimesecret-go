@@ -75,8 +75,19 @@ func main() {
 
 > Note: By default, a default http.Client instance is used if one is not passed when creating a client instance.
 
+More documentation can be found [here](https://pkg.go.dev/github.com/chelnak/onetimesecret-go).
+
 ## Testing
 
 ```go
 go test ./... -v
+```
+
+## Releasing
+
+Releases are tag based. From the main branch do the following:
+
+```go
+git tag -a vX.X.X -m "Release vX.X.X some reason"
+git push --follow-tags
 ```
