@@ -7,7 +7,7 @@ This is a Go implementation of the [onetimesecret.com api](https://onetimesecret
 ## Installation
 
 ```go
-go get github.com/chelnak/onetimesecret-go/onetimesecret
+go get github.com/chelnak/onetimesecret-go
 ```
 
 ## Usage
@@ -30,7 +30,10 @@ func main() {
 
     // Send a request with context
     ctx := context.Background()
-    response := clent.GetStatus(ctx)
+    response, err := clent.GetStatus(ctx)
+    if err != nil {
+        panic(err)
+    }
 
     fmt.Println(response.Status)
 
@@ -61,7 +64,10 @@ func main() {
 
     // Send a request with context
     ctx := context.Background()
-    response := clent.GetStatus(ctx)
+    response, err := clent.GetStatus(ctx)
+    if err != nil {
+        panic(err)
+    }
 
     fmt.Println(response.Status)
 }
