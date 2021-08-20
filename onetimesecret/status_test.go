@@ -24,7 +24,7 @@ func Test_GetStatusReturnsAValidResponse(t *testing.T) {
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	ctx := context.Background()

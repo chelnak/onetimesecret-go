@@ -27,7 +27,7 @@ func Test_RetrieveSecretReturnsAValidResponse(t *testing.T) {
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	ctx := context.Background()

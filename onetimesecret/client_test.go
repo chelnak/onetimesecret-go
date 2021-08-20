@@ -10,25 +10,25 @@ func Test_ClientIsCreatedWithDefaults(t *testing.T) {
 
 	client := NewClient()
 
-	assert.Equal(t, DefaultBaseUrl, client.BaseUrl)
+	assert.Equal(t, DefaultBaseURL, client.BaseURL)
 	assert.Equal(t, "", client.Username)
-	assert.Equal(t, "", client.ApiKey)
+	assert.Equal(t, "", client.APIKey)
 }
 
 func Test_ClientIsCreatedWithOptions(t *testing.T) {
 
-	mockBaseUrl := "https://mytesturl.com"
+	mockBaseURL := "https://mytesturl.com"
 	mockUsername := "testUser@gmail.com"
-	mockApiKey := "testApiKey"
+	mockAPIKey := "testApiKey"
 
 	client := NewClient(
-		WithBaseUrl(mockBaseUrl),
+		WithBaseURL(mockBaseURL),
 		WithUsername(mockUsername),
-		WithApiKey(mockApiKey),
+		WithAPIKey(mockAPIKey),
 	)
 
-	assert.Equal(t, mockBaseUrl, client.BaseUrl, "")
+	assert.Equal(t, mockBaseURL, client.BaseURL, "")
 	assert.Equal(t, mockUsername, client.Username, "")
-	assert.Equal(t, mockApiKey, client.ApiKey, "")
+	assert.Equal(t, mockAPIKey, client.APIKey, "")
 
 }

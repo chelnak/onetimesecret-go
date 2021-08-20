@@ -1,4 +1,4 @@
-// Onetimesecret is a Go client that wraps the REST api of https://onetimesecret.com.
+// Package onetimesecret is a Go client that wraps the REST api of https://onetimesecret.com.
 package onetimesecret
 
 import (
@@ -6,29 +6,32 @@ import (
 	"net/mail"
 )
 
+// Constants
 const (
-	DefaultBaseUrl         = "https://onetimesecret.com/api/v1"
-	StatusEndpoint         = "status"
-	ShareEndpoint          = "share"
-	GenerateEndpoint       = "generate"
-	SecretEndpoint         = "secret"
-	MetadataEndpoint       = "private"
-	BurnEndpoint           = "burn"
-	RecentMetadataEndpoint = "recent"
+	DefaultBaseURL         = "https://onetimesecret.com/api/v1" // The default base url for the onetimesecret.com api.
+	StatusEndpoint         = "status"                           // The status endpoint.
+	ShareEndpoint          = "share"                            // The share endpoint.
+	GenerateEndpoint       = "generate"                         // The generate endpoint.
+	SecretEndpoint         = "secret"                           // The secret endpoint.
+	MetadataEndpoint       = "private"                          // The private endpoint.
+	BurnEndpoint           = "burn"                             // The burn endpoint.
+	RecentMetadataEndpoint = "recent"                           // The recent metadata endpoint.
 )
 
-// HttpClient is used to abstract the requirement for http.Client
-type HttpClient interface {
+// HTTPClient is used to abstract the requirement for http.Client
+type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
+// Client represents a onetimesecret http client instance.
 type Client struct {
-	BaseUrl    string
-	Username   string
-	ApiKey     string
-	HttpClient HttpClient
+	BaseURL    string     // The base url of the api.
+	Username   string     // The username of the requesting user.
+	APIKey     string     // The api key of the requesting user.
+	HTTPClient HTTPClient // A http.Client instance.
 }
 
+// ClientOption is the base struct for client options.
 type ClientOption func(*Client)
 
 func init() {}
@@ -37,10 +40,10 @@ func init() {}
 func NewClient(options ...ClientOption) *Client {
 
 	c := &Client{
-		BaseUrl:    DefaultBaseUrl,
+		BaseURL:    DefaultBaseURL,
 		Username:   "",
-		ApiKey:     "",
-		HttpClient: &http.Client{},
+		APIKey:     "",
+		HTTPClient: &http.Client{},
 	}
 
 	for _, option := range options {
@@ -50,10 +53,10 @@ func NewClient(options ...ClientOption) *Client {
 	return c
 }
 
-// WithBaseUrl overrides the clients default base url property
-func WithBaseUrl(baseUrl string) ClientOption {
+// WithBaseURL overrides the clients default base url property
+func WithBaseURL(baseURL string) ClientOption {
 	return func(c *Client) {
-		c.BaseUrl = baseUrl
+		c.BaseURL = baseURL
 	}
 }
 
@@ -70,16 +73,16 @@ func WithUsername(username string) ClientOption {
 	}
 }
 
-// WithApiKey overrides the clients default api key property
-func WithApiKey(apiKey string) ClientOption {
+// WithAPIKey overrides the clients default api key property
+func WithAPIKey(apiKey string) ClientOption {
 	return func(c *Client) {
-		c.ApiKey = apiKey
+		c.APIKey = apiKey
 	}
 }
 
-// WithHttpClient overrides the default http client property
-func WithHttpClient(client HttpClient) ClientOption {
+// WithHTTPClient overrides the default http client property
+func WithHTTPClient(client HTTPClient) ClientOption {
 	return func(c *Client) {
-		c.HttpClient = client
+		c.HTTPClient = client
 	}
 }

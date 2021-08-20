@@ -24,7 +24,7 @@ func Test_ShareSecretReturnsAValidResponse(t *testing.T) {
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	secret := "testSecret"
@@ -51,7 +51,7 @@ func Test_ShareSecretReturnsAnErrorWhenAnInvalidRecipientIsPassed(t *testing.T) 
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	secret := "testSecret"

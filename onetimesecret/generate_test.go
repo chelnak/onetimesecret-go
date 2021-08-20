@@ -30,7 +30,7 @@ func Test_GenerateSecretReturnsAvalidResponse(t *testing.T) {
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	ctx := context.Background()

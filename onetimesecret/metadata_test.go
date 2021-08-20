@@ -28,7 +28,7 @@ func Test_GetMetadataReturnsAValidResponse(t *testing.T) {
 	}
 
 	client := NewClient(
-		WithHttpClient(mockClient),
+		WithHTTPClient(mockClient),
 	)
 
 	ctx := context.Background()

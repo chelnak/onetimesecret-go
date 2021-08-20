@@ -12,11 +12,11 @@ import (
 	"strings"
 )
 
-func (c *Client) newUrl(endpoint ...interface{}) (url.URL, error) {
+func (c *Client) newURL(endpoint ...interface{}) (url.URL, error) {
 
-	base := c.BaseUrl
-	if c.BaseUrl == "" {
-		base = DefaultBaseUrl
+	base := c.BaseURL
+	if c.BaseURL == "" {
+		base = DefaultBaseURL
 	}
 
 	if strings.HasPrefix(base, "/") {
@@ -54,7 +54,7 @@ func (c *Client) request(ctx context.Context, method string, url url.URL, body i
 			fmt.Sprintf(
 				"%s:%s",
 				c.Username,
-				c.ApiKey,
+				c.APIKey,
 			),
 		),
 	)
@@ -67,7 +67,7 @@ func (c *Client) request(ctx context.Context, method string, url url.URL, body i
 		req.URL.RawQuery = query
 	}
 
-	res, err := c.HttpClient.Do(req)
+	res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return err
 	}
