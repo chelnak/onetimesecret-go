@@ -76,7 +76,7 @@ func (c *Client) request(ctx context.Context, method string, url url.URL, body i
 
 	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusBadRequest {
 		resBody, _ := ioutil.ReadAll(res.Body)
-		return fmt.Errorf("client recieved a %d response: %s", res.StatusCode, string(resBody))
+		return fmt.Errorf("client received a %d response: %s", res.StatusCode, string(resBody))
 	}
 
 	if err = json.NewDecoder(res.Body).Decode(&v); err != nil {
