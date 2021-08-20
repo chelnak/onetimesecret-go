@@ -1,5 +1,7 @@
 # Go Api Client for onetimesecret.com
 
+![onetimesecret](https://github.com/chelnak/onetimesecret-go/actions/workflows/main.yml/badge.svg)
+
 This is a Go implementation of the [onetimesecret.com api](https://onetimesecret.com/docs/api) api. The module aims to provide a developer friendly interface for all endpoints exposed by the api.
 
 ## Installation
