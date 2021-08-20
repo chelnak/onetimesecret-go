@@ -32,7 +32,7 @@ jobs:
     name: Release module
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-    needs: builds
+    needs: test
 
     steps:
     
