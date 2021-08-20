@@ -1,0 +1,44 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go_version: ["1.16", "1.15"]
+
+    steps:
+
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go_version }}
+
+      - name: Install golint
+        run: go get -u golang.org/x/lint/golint
+
+      - name: govet
+        run: go vet .
+
+      - name: golint
+        run: golint .
+
+      - name: go test
+        run: go test -v ./...
+
+  release:
+    name: Release module
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+    needs: builds
+
+    steps:
+    
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          name: "OneTimeSecret"
+          token: ${{ secrets.GITHUB_TOKEN }}    
