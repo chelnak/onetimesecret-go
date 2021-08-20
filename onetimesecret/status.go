@@ -14,12 +14,13 @@ type GetStatusResponse struct {
 func (c *Client) GetStatus(ctx context.Context) (*GetStatusResponse, error) {
 
 	url, err := c.newURL(StatusEndpoint)
+
 	if err != nil {
 		return nil, err
 	}
 
 	res := GetStatusResponse{}
-	if err := c.request(ctx, http.MethodPost, url, nil, "", &res); err != nil {
+	if err := c.request(ctx, http.MethodGet, url, nil, "", &res); err != nil {
 		return nil, err
 	}
 
