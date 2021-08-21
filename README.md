@@ -30,7 +30,7 @@ func main() {
 
     // Send a request with context
     ctx := context.Background()
-    response, err := clent.GetStatus(ctx)
+    response, err := client.GetStatus(ctx)
     if err != nil {
         panic(err)
     }
@@ -64,7 +64,7 @@ func main() {
 
     // Send a request with context
     ctx := context.Background()
-    response, err := clent.GetStatus(ctx)
+    response, err := client.GetStatus(ctx)
     if err != nil {
         panic(err)
     }
