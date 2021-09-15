@@ -36,7 +36,7 @@ jobs:
         run: golint ./...
 
       - name: go test
-        run: go test -v ./...
+        run: go test -tags unit ./... -v
 
   release:
     name: Release

@@ -79,20 +79,19 @@ func main() {
 
 More documentation can be found [here](https://pkg.go.dev/github.com/chelnak/onetimesecret-go).
 
-## Testing
+## Unit testing
 
 ```go
-go test ./... -v
+go test -tags unit ./... -v
 ```
 
-### Running example tests
+## Examples
 
 ```go
 export OTS_USERNAME=otsuser@domain.com
 export OTS_APIKEY=xxxxx
 
-go test ./... -timeout 30s -run ^Example_shareJourney$
-go test ./... -timeout 30s -run ^Example_generateJourney$
+go test -tags example ./... -v
 ```
 
 ## Releasing
