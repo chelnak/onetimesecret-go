@@ -33,11 +33,12 @@ func (c *Client) newURL(endpoint ...interface{}) (url.URL, error) {
 		return *url, err
 	}
 
+	url.Path = strings.TrimSuffix(url.Path, "/")
+
 	return *url, nil
 }
 
 func (c *Client) request(ctx context.Context, method string, url url.URL, body io.Reader, query string, v interface{}) error {
-
 	req, err := http.NewRequest(method, url.String(), body)
 	if err != nil {
 		return err
