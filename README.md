@@ -85,6 +85,16 @@ More documentation can be found [here](https://pkg.go.dev/github.com/chelnak/one
 go test ./... -v
 ```
 
+### Running example tests
+
+```go
+export OTS_USERNAME=otsuser@domain.com
+export OTS_APIKEY=xxxxx
+
+go test ./... -timeout 30s -run ^Example_shareJourney$
+go test ./... -timeout 30s -run ^Example_generateJourney$
+```
+
 ## Releasing
 
 Releases are tag based. From the main branch do the following:
