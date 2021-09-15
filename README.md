@@ -16,26 +16,28 @@ go get github.com/chelnak/onetimesecret-go
 package main
 
 import (
-    ots "github.com/chelnak/onetimesecret-go/onetimesecret"
-    "context"
+ "context"
+ "fmt"
+
+ ots "github.com/chelnak/onetimesecret-go/onetimesecret"
 )
 
 func main() {
 
-    // Build a new client
-    client := ots.NewClient(
-        WithUsername("otsuser@domain.com"),
-        WithApiKey("xxxxxxxx"),
-    )
+ // Build a new client
+ client := ots.NewClient(
+  ots.WithUsername("otsuser@domain.com"),
+  ots.WithAPIKey("xxxxxxxx"),
+ )
 
-    // Send a request with context
-    ctx := context.Background()
-    response, err := client.GetStatus(ctx)
-    if err != nil {
-        panic(err)
-    }
+ // Send a request with context
+ ctx := context.Background()
+ response, err := client.GetStatus(ctx)
+ if err != nil {
+  panic(err)
+ }
 
-    fmt.Println(response.Status)
+ fmt.Println(response.Status)
 
 }
 ```
@@ -57,9 +59,9 @@ func main() {
 
     // Build a new ots client and use WithHttpClient option
     client := ots.NewClient(
-        WithUsername("otsuser@domain.com"),
-        WithApiKey("xxxxxxxx"),
-        WithHttpClient(customHttpClient)
+        ots.WithUsername("otsuser@domain.com"),
+        ots.WithApiKey("xxxxxxxx"),
+        ots.WithHttpClient(customHttpClient)
     )
 
     // Send a request with context
